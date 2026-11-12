@@ -1,0 +1,18 @@
+{
+  "name": "@anthivo/ami-action",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Anthivo's GitHub Action: run a project's approved tests in Anthivo on each push and pull request, and fail the job on a new defect.",
+  "type": "module",
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

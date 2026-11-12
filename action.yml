@@ -1,0 +1,43 @@
+name: Anthivo
+description: Run your project's approved tests in Anthivo on each push and pull request, and fail the job on a new defect.
+author: Anthivo
+branding:
+  icon: check-circle
+  color: blue
+inputs:
+  token:
+    description: >-
+      An Anthivo access token from the repository's secrets, such as secrets.ANTHIVO_TOKEN: make one in Anthivo's
+      Settings > Access Tokens, limited to the project. Never write a token in the workflow file.
+    required: true
+  project:
+    description: The project, as PRJ-N. Default anthivo.json's, or the token's only project.
+    required: false
+  environment:
+    description: The environment's name. Default anthivo.json's, or the project's only environment.
+    required: false
+  url:
+    description: >-
+      The address to test: a preview or staging URL the environment allows (its own site, or one its preview URLs
+      match). Default the environment's App URL.
+    required: false
+  fail-on:
+    description: >-
+      The lowest severity of a new defect that fails the job: critical, high, medium, low or none. Default
+      anthivo.json's, else critical.
+    required: false
+  run-on-forks:
+    description: Run pull requests from forks too. They're skipped by default.
+    required: false
+    default: "false"
+  server:
+    description: Anthivo's address.
+    required: false
+    default: https://www.anthivo.com
+  cli-version:
+    description: The exact version of the anthivo CLI the job runs. Default the version this Action was tested with.
+    required: false
+    default: "0.1.0"
+runs:
+  using: node24
+  main: dist/main.js
